@@ -1,4 +1,5 @@
 from django.db import models
+#from order.models import ShippingInformation
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -10,7 +11,7 @@ class Product(models.Model):
     name                    = models.CharField(max_length=50)
     simple_description      = models.CharField(max_length=100)
     price                   = models.DecimalField(max_digits=10, decimal_places=2)
-    #shipping_information    = models.ForeignKey('ShippingInformation', on_delete=models.SET_NULL, null=True)
+    shipping_information    = models.ForeignKey('order.ShippingInformation', on_delete=models.SET_NULL, null=True)
     basic_information       = models.ForeignKey('BasicInformation', on_delete=models.SET_NULL, null=True)
     weight                  = models.DecimalField(max_digits=10, decimal_places=2)
     usage                   = models.CharField(max_length=50)
