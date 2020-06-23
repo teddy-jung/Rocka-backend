@@ -17,18 +17,19 @@ class Product(models.Model):
     kfda_audit              = models.CharField(max_length=100)
     caution                 = models.CharField(max_length=1000)
     color                   = models.ForeignKey('Color', on_delete=models.SET_NULL, null=True)
-    is_soldout              = models.BooleanField(default=False)
+    is_soldout              = models.BooleanField(default=0)
     manufacturer            = models.ForeignKey('Manufacturer', on_delete=models.SET_NULL, null=True)
     outer_back_image_url    = models.URLField(max_length=2000, null=True)
     outer_front_image_url   = models.URLField(max_length=2000, null=True)
     inner_image_url         = models.URLField(max_length=2000, null=True)
+    category                = models.ManyToManyField(Category, through='CategoryProduct')
 
     class Meta:
         db_table = 'products'
 
 class CategoryProduct(models.Model):
-    category    = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
-    product     = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    category    = models.ForeignKey(Category, on_delete=models.CASCADE)
+    product     = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'categories_products'
