@@ -16,7 +16,7 @@ idna==2.9
 jwt==1.0.0
 mccabe==0.6.1
 mysqlclient==1.4.6
-Pillow==7.1.2
+Pillow==9.3.0
 pycodestyle==2.6.0
 pycparser==2.20
 pyflakes==2.1.1
